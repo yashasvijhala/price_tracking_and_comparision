@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model Products_ {
+  id         BigInt   @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  ProductID  Int      @unique @default(autoincrement()) @map(" ProductID") @db.SmallInt
+  inActive   Boolean?
+
+  @@id([id, ProductID])
+  @@map("Products ")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model prices {
+  id     Int     @id @default(autoincrement()) @db.SmallInt
+  name   String?
+  myntra String?
+  nykaa  String?
+  url    String?
+}
