@@ -15,7 +15,7 @@ export const sendEmail = async (
   }as any);
 
   const mailOptions = {
-    from: "test@thedevelopercompany.com",
+    from:process.env.NEXT_PUBLIC_EMAIL_USER,
     to: recipient,
     subject: "Price Update",
     text: `The current price of the product is ${price}`,
